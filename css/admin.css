@@ -1,0 +1,46 @@
+.panel-left {        
+    position: fixed;
+    background-color: #212121;
+    width: 16rem;
+    height: 100%;
+    float: left;
+    margin: 0;
+    z-index: 1;
+}
+.panel-right {
+    width: 100%;
+    float: left;
+    padding-left: 16rem;
+    z-index: 0;
+    padding-top: 24px;
+}​
+
+.nav {
+	display: block;
+}
+
+.nav-header {
+	display: block;
+	background: #F44336;
+	height: 10rem;
+}
+
+.nav li {
+	display: block;
+	width: 100%;
+	list-style-type: none;
+	padding: 0;
+}
+
+.nav a {
+	display: block;
+	width: 100%;
+	padding: 8px 8px 8px 8px;
+	color: #FFF;
+	text-decoration: none;
+}
+
+.nav a:hover {
+	background-color:rgba(255, 255, 255, 0.2);
+	color: #2196F3;
+}

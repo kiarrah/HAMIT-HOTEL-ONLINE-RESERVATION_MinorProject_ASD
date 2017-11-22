@@ -1,64 +1,54 @@
 <?php
-
 	session_start();
-
-	if (isset($_SESSION['is_login'])) {
-		header("Location: home.php"); 
-	}
-
+	require_once('util/util.php');
+	require_once('util/connection.php');
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Login</title>
+
+	<title>Hamit Hotel</title>
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/skeleton.css">
+	<link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
+	<link rel="stylesheet" type="text/css" href="css/owl.theme.default.css">
+	<link rel="stylesheet" type="text/css" href="css/datepicker.css">
+	<link rel="stylesheet" type="text/css" href="css/social.icons.css">
+	<link rel="stylesheet" type="text/css" type="text/css" href="css/style.css">
+
 </head>
 <body>
 
-	<?php
-	
-		if (isset($_POST['login'])) {
+	<nav>
+		<img class="logo" src="<?php pUrl() ?>/asset/logo.png">
+		<ul>
+			<li><a href="<?php pUrl(); ?>/">HOME</a></li>
+			<li><a href="<?php pUrl(); ?>/about-us.php">ABOUT US</a></li>
+			<li><a href="<?php pUrl(); ?>/accommodation.php">ACCOMMODATIONS</a></li>
+		</ul>
+	</nav>
 
-			try {
+	<div class="banner">
+		<img src="asset/banner.jpg">
+	</div>
 
-				$username = $_POST['username'];
-				$password = $_POST['password'];
+	<div class="container">
+		<div class="row">
+			<div class="snippet-about">
+				<div class="head">
+					<h4>WELCOME</h4>
+					<h6>Welcome to our luxury and romantic Bed and Breakfast on beautiful Mount Apo.</h6>
+				</div>
+				<div class="body">
+					<hr />
+					Hamit Hotel offers luxury 4 Star Bed &amp; Breakfast accommodation with breathtaking views. We are located on the highest mountain &amp; volcano in the Philippines. Escape from the frantic pace of life at work and home, come on up to our cool “island in the sky” and leave your worries behind. Our warm and friendly hospitality will leave you feeling truly welcomed.
+					<hr />
+				</div>
+			</div>
+		</div>
+	</div>
 
-				if ($username == '') {
-					throw new Exception('Empty username.');
-				} else if ($password == '') {
-					throw new Exception('Empty password.');
-				}
-
-				$mysqli = new mysqli('localhost', 'root', '', 'hotel');
-
-				/* check connection */
-				if ($mysqli->connect_errno) {
-				    printf("Connect failed: %s\n", $mysqli->connect_error);
-				    exit();
-				}
-
-				if ($result = $mysqli->query("SELECT * FROM users WHERE username = '$username' AND password = '$password' ")) {
-
-					$_SESSION['is_login'] = true;
-					$_SESSION['username'] = $username;
-					$_SESSION['password'] = $password;
-
-				}
-
-
-			} catch (Exception $e) {
-				echo $e->getMessage() . '</br>';
-			}
-
-		}
-		
-	?>
-
-	<form method="POST" action="">
-		<input type="text" name="username">
-		<input type="password" name="password">
-		<input type="submit" name="login" value="Login">
-	</form>
+	<?php include_once('asset/footer.php'); ?>
 
 </body>
 </html>
